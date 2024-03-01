@@ -3,9 +3,9 @@ export const createCharacter = (type) => {
     type: type,
     level: 1
   };
-}
+};
 
-export const assignAttributes = (prop) => {
+export const setAttributes = (prop) => {
   return (value) => {
     return (state) => ({
       ...state,
@@ -13,3 +13,14 @@ export const assignAttributes = (prop) => {
     });
   };
 };
+
+export const storeAttributes = () => {
+  let currentState = {};
+  return (stateChangeFunction = state => state) => {
+    const newState = stateChangeFunction(currentState);
+    currentState = {...newState};
+    return newState;
+  };
+};
+
+export const stateControl = storeAttributes();

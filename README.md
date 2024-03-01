@@ -52,7 +52,8 @@ Character types:
 
 #### Level up system
 
-* characters level up by winning brawls
+* characters attribute values increase by winning brawls
+* characters level up when attributes reach certain levels
 * attributes increase with each new level
 * after every 5 levels, character gains a new unique ability
 

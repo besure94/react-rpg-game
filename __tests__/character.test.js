@@ -1,5 +1,4 @@
-import { experiments } from "webpack";
-import { createCharacter, assignAttributes } from "../src/js/character.js";
+import { createCharacter, setAttributes, storeAttributes } from "../src/js/character.js";
 
 describe('RPG game character creation tests', () => {
 
@@ -14,8 +13,8 @@ describe('RPG game character creation tests', () => {
 
   test('Should be able to assign a value for a base attribute for a character.', () => {
     const createdCharacter = createCharacter("mechanic");
-    const setAttributes = assignAttributes("intelligence")(8);
-    const result = setAttributes(createdCharacter);
+    const attributesSet = setAttributes("intelligence")(8);
+    const result = attributesSet(createdCharacter);
     expect(result).toEqual({ "type": "mechanic", "level": 1, "intelligence": 8 });
   });
 
@@ -25,10 +24,10 @@ describe('RPG game character creation tests', () => {
     const sergeant = createCharacter('sergeant');
     const president = createCharacter('president');
 
-    const setAttributesMechanic = assignAttributes('endurance')(7);
-    const setAttributesEnforcer = assignAttributes('melee')(9);
-    const setAttributesSergeant = assignAttributes('strength')(8);
-    const setAttributesPresident = assignAttributes('charisma')(9);
+    const setAttributesMechanic = setAttributes('endurance')(7);
+    const setAttributesEnforcer = setAttributes('melee')(9);
+    const setAttributesSergeant = setAttributes('strength')(8);
+    const setAttributesPresident = setAttributes('charisma')(9);
 
     const mechanicResult = setAttributesMechanic(mechanic);
     const enforcerResult = setAttributesEnforcer(enforcer);
@@ -41,9 +40,22 @@ describe('RPG game character creation tests', () => {
     expect(presidentResult).toEqual({ "type": "president", "level": 1, "charisma": 9 });
   });
 
-  test('Each character should have a property that shows their level.', () => {
+  test('Each character should have a property that shows their level, which will be 1 to start.', () => {
     const mechanic = createCharacter('mechanic');
     const level = mechanic.level;
     expect(level).toEqual(1);
+  });
+
+  test('Should have a method that can update the new state of a modified character.', () => {
+    const characterState = storeAttributes();
+
+    const increaseStrength = setAttributes('melee')(3);
+    const decreaseStrength = setAttributes('melee')(-1);
+
+    const strengthenedCharacter = characterState(increaseStrength);
+    const weakenedCharacter = characterState(decreaseStrength);
+
+    expect(strengthenedCharacter).toEqual({ "melee": 3 });
+    expect(weakenedCharacter).toEqual({ "melee": 2 });
   });
 });
