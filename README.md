@@ -30,3 +30,33 @@
 * _should go here_
 
 ## License
+
+### Project Outline Ideas
+
+* Motorcycle gang setting
+* 4 character types
+* five base attributes for each character
+
+Character types:
+
+* Mechanic
+* Enforcer
+* Sergeant
+* President
+
+#### Battle system
+
+* bikers fight members from other biker gangs
+* bareknuckle brawl
+* hand-to-hand combat
+
+#### Level up system
+
+* characters level up by winning brawls
+* attributes increase with each new level
+* after every 5 levels, character gains a new unique ability
+
+#### Inventory
+
+* certain weapons increase physical attributes, such as strength
+* certain clothing increases attributes, such as endurance

@@ -1,4 +1,4 @@
-import { createCharacter } from "../src/js/character.js";
+import { createCharacter, assignAttributes } from "../src/js/character.js";
 
 describe('RPG game character creation tests', () => {
 
@@ -9,5 +9,12 @@ describe('RPG game character creation tests', () => {
     expect(createdCharacter1.type).toEqual("sniper");
     expect(createdCharacter2.type).toEqual("mechanic");
     expect(createdCharacter3.type).toEqual("scout");
+  });
+
+  test('Should be able to assign values for base attributes for a character.', () => {
+    const createdCharacter = createCharacter("mechanic");
+    const setAttributes = assignAttributes("intelligence")(8);
+    const result = setAttributes(createdCharacter);
+    expect(result).toEqual({ "type": "mechanic", "intelligence": 8 });
   });
 });
