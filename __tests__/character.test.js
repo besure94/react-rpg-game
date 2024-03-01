@@ -62,4 +62,14 @@ describe('RPG game character creation tests', () => {
     const health = president.health;
     expect(health).toEqual(100);
   });
+
+  test('Should contain a function that can allow a character to level up once their attribute hits a certain value.', () => {
+    const setMelee = setAttributes('melee')(10);
+    const boostMelee = setAttributes('melee')(10);
+    const characterState = storeAttributes();
+    const initialEnforcerState = characterState(setMelee);
+    const newEnforcerState = characterState(boostMelee);
+    expect(initialEnforcerState).toEqual({ 'melee': 10, 'level': 1 });
+    expect(newEnforcerState).toEqual({ 'melee': 20, 'level': 2 });
+  });
 });

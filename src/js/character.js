@@ -8,10 +8,16 @@ export const createCharacter = (type) => {
 
 export const setAttributes = (prop) => {
   return (value) => {
-    return (state) => ({
-      ...state,
-      [prop]: (state[prop] || 0) + value
-    });
+    return (state) => {
+      const updatedState = {
+        ...state,
+        [prop]: (state[prop] || 0) + value
+      };
+      if (prop != 'level' && updatedState[prop] >= 20) {
+        updatedState.level++;
+      }
+      return updatedState;
+    };
   };
 };
 
@@ -25,3 +31,4 @@ export const storeAttributes = () => {
 };
 
 export const stateControl = storeAttributes();
+
