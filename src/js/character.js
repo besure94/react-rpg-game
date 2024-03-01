@@ -16,7 +16,7 @@ export const setAttributes = (prop) => {
 
 export const storeAttributes = () => {
   let currentState = {};
-  return (stateChangeFunction = state => state) => {
+  return (stateChangeFunction) => {
     const newState = stateChangeFunction(currentState);
     currentState = {...newState};
     return newState;
