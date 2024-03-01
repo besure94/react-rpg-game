@@ -1,7 +1,8 @@
 export const createCharacter = (type) => {
   return {
     type: type,
-    level: 1
+    level: 1,
+    health: 100
   };
 };
 

@@ -15,7 +15,7 @@ describe('RPG game character creation tests', () => {
     const createdCharacter = createCharacter("mechanic");
     const attributesSet = setAttributes("intelligence")(8);
     const result = attributesSet(createdCharacter);
-    expect(result).toEqual({ "type": "mechanic", "level": 1, "intelligence": 8 });
+    expect(result).toEqual({ "type": "mechanic", "level": 1, "health": 100, "intelligence": 8 });
   });
 
   test('Should be able to add different attributes to different characters.', () => {
@@ -34,10 +34,10 @@ describe('RPG game character creation tests', () => {
     const sergeantResult = setAttributesSergeant(sergeant);
     const presidentResult = setAttributesPresident(president);
 
-    expect(mechanicResult).toEqual({ "type": "mechanic", "level": 1, "endurance": 7 });
-    expect(enforcerResult).toEqual({ "type": "enforcer", "level": 1, "melee": 9 });
-    expect(sergeantResult).toEqual({ "type": "sergeant", "level": 1,"strength": 8 });
-    expect(presidentResult).toEqual({ "type": "president", "level": 1, "charisma": 9 });
+    expect(mechanicResult).toEqual({ "type": "mechanic", "level": 1, "health": 100, "endurance": 7 });
+    expect(enforcerResult).toEqual({ "type": "enforcer", "level": 1, "health": 100, "melee": 9 });
+    expect(sergeantResult).toEqual({ "type": "sergeant", "level": 1, "health": 100, "strength": 8 });
+    expect(presidentResult).toEqual({ "type": "president", "level": 1, "health": 100, "charisma": 9 });
   });
 
   test('Each character should have a property that shows their level, which will be 1 to start.', () => {
@@ -46,16 +46,20 @@ describe('RPG game character creation tests', () => {
     expect(level).toEqual(1);
   });
 
-  test('Should have a method that can update the new state of a modified character.', () => {
+  test('Should have a method that can update and store the new state of a modified character.', () => {
     const characterState = storeAttributes();
-
     const increaseStrength = setAttributes('melee')(3);
     const decreaseStrength = setAttributes('melee')(-1);
-
     const strengthenedCharacter = characterState(increaseStrength);
     const weakenedCharacter = characterState(decreaseStrength);
 
     expect(strengthenedCharacter).toEqual({ "melee": 3 });
     expect(weakenedCharacter).toEqual({ "melee": 2 });
+  });
+
+  test('Every character should have a health property of 100.', () => {
+    const president = createCharacter('president');
+    const health = president.health;
+    expect(health).toEqual(100);
   });
 });

@@ -47,8 +47,22 @@ Character types:
 #### Battle system
 
 * bikers fight members from other biker gangs
-* bareknuckle brawl
-* hand-to-hand combat
+
+Fight conditions:
+
+function for attacking
+
+function for defending
+
+function for calculating damage done
+
+function for determining a winner
+
+a character fights another character
+
+character needs a health property
+
+fight will be over when one characters health is 0
 
 #### Level up system
 
