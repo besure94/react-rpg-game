@@ -16,7 +16,7 @@ describe('RPG game character creation tests', () => {
     const createdCharacter = createCharacter("mechanic");
     const setAttributes = assignAttributes("intelligence")(8);
     const result = setAttributes(createdCharacter);
-    expect(result).toEqual({ "type": "mechanic", "intelligence": 8 });
+    expect(result).toEqual({ "type": "mechanic", "level": 1, "intelligence": 8 });
   });
 
   test('Should be able to add different attributes to different characters.', () => {
@@ -35,9 +35,15 @@ describe('RPG game character creation tests', () => {
     const sergeantResult = setAttributesSergeant(sergeant);
     const presidentResult = setAttributesPresident(president);
 
-    expect(mechanicResult).toEqual({ "type": "mechanic", "endurance": 7 });
-    expect(enforcerResult).toEqual({ "type": "enforcer", "melee": 9 });
-    expect(sergeantResult).toEqual({ "type": "sergeant","strength": 8 });
-    expect(presidentResult).toEqual({ "type": "president","charisma": 9 });
+    expect(mechanicResult).toEqual({ "type": "mechanic", "level": 1, "endurance": 7 });
+    expect(enforcerResult).toEqual({ "type": "enforcer", "level": 1, "melee": 9 });
+    expect(sergeantResult).toEqual({ "type": "sergeant", "level": 1,"strength": 8 });
+    expect(presidentResult).toEqual({ "type": "president", "level": 1, "charisma": 9 });
+  });
+
+  test('Each character should have a property that shows their level.', () => {
+    const mechanic = createCharacter('mechanic');
+    const level = mechanic.level;
+    expect(level).toEqual(1);
   });
 });
