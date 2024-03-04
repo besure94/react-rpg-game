@@ -72,7 +72,28 @@ describe('RPG game character creation tests', () => {
     const boostedState = characterState(boostMelee);
     expect(enforcerState).toEqual({ type: 'enforcer', level: 1, health: 100 });
     expect(setMeleeState).toEqual({ type: 'enforcer', level: 1, health: 100, melee: 10 });
-    expect(boostedState).toEqual({ type: 'enforcer', level: 2, health: 105, melee: 20 });
+    expect(boostedState).toEqual({ type: 'enforcer', level: 2, health: 105, melee: 21 });
   });
 
+  test('Should contain a function that enhances a characters abilities when they gain certain items.', () => {
+    const characterState = storeAttributes();
+    const createEnforcer = createCharacter('enforcer');
+    const setMelee = setAttributes('melee')(10);
+    const setEndurance = setAttributes('endurance')(8);
+
+    const enforcerState = characterState(createEnforcer);
+    const setMeleeState = characterState(setMelee);
+    const spikedBat = setAttributes('melee')(5);
+    const enhancedMelee = characterState(spikedBat);
+    const setEnduranceState = characterState(setEndurance);
+    const paddedVest = setAttributes('endurance')(3);
+    const enhancedEndurance = characterState(paddedVest);
+
+
+    expect(enforcerState).toEqual({ type: 'enforcer', level: 1, health: 100 });
+    expect(setMeleeState).toEqual({ type: 'enforcer', level: 1, health: 100, melee: 10 });
+    expect(enhancedMelee).toEqual({ type: 'enforcer', level: 1, health: 100, melee: 15 });
+    expect(setEnduranceState).toEqual( { type: 'enforcer', level: 1, health: 100, melee: 15, endurance: 8 });
+    expect(enhancedEndurance).toEqual({ type: 'enforcer', level: 1, health: 100, melee: 15, endurance: 11 });
+  });
 });
