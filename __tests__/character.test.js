@@ -72,6 +72,7 @@ describe('RPG game character creation tests', () => {
     const boostedState = characterState(boostMelee);
     expect(enforcerState).toEqual({ type: 'enforcer', level: 1, health: 100 });
     expect(setMeleeState).toEqual({ type: 'enforcer', level: 1, health: 100, melee: 10 });
-    expect(boostedState).toEqual({ type: 'enforcer', level: 2, health: 100, melee: 20 });
+    expect(boostedState).toEqual({ type: 'enforcer', level: 2, health: 105, melee: 20 });
   });
+
 });

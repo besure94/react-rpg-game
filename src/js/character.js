@@ -18,6 +18,7 @@ export const setAttributes = (prop) => {
       };
       if (updatedState[prop] >= 20) {
         updatedState.level++;
+        updatedState.health += 5;
       }
       return updatedState;
     };
