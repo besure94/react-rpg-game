@@ -1,8 +1,11 @@
 export const createCharacter = (type) => {
-  return {
-    type: type,
-    level: 1,
-    health: 100
+  return () => {
+    const newCharacter = {
+      type: type,
+      level: 1,
+      health: 100
+    }
+    return newCharacter;
   };
 };
 
@@ -13,7 +16,7 @@ export const setAttributes = (prop) => {
         ...state,
         [prop]: (state[prop] || 0) + value
       };
-      if (prop != 'level' && updatedState[prop] >= 20) {
+      if (updatedState[prop] >= 20) {
         updatedState.level++;
       }
       return updatedState;
