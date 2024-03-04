@@ -1,6 +1,6 @@
-# Template Repository
+# RPG Game
 
-#### Use this template repository for starting new projects. Update with new technologies and packages when necessary.
+#### An application containing business logic for an RPG game.
 
 #### By (Your Name Here)
 
@@ -16,9 +16,11 @@
 
 ## Description
 
+This application demonstrates knowledge and application of functional programming concepts such as closures, composition, and state. It contains business logic for creating characters, modifying attributes, leveling up and acquiring inventory items for an outlaw biker-themed RPG game. It does not contain a UI.
+
 ## Setup/Installation Requirements
 
-* Select the green "Use this template" button and select "create a new repository".
+* Select the green "Code" button and clone this repository to your desktop.
 * In the terminal, go to your project folder and run the command `$ npm install` to install node_modules.
 * Run the command `$ npm run build` to bundle together JS files.
 * Enter the command `$ npm run start` to start a live development server.
@@ -26,10 +28,20 @@
 
 ## Known Bugs
 
-* _Any known issues_
-* _should go here_
+None.
+
+## Further Exploration
+
+* Could expand business logic to include more complexity for character creation and adding/modifying attributes.
+* Could expand functionality to include a more advanced leveling up and inventory system.
 
 ## License
+
+MIT
+
+Copyright(c) 2024 Brian Scherner
+
+## Project Ideas
 
 ### Project Outline Ideas
 
