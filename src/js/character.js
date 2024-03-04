@@ -3,7 +3,8 @@ export const createCharacter = (type) => {
     const newCharacter = {
       type: type,
       level: 1,
-      health: 100
+      health: 100,
+      items: []
     }
     return newCharacter;
   };
@@ -36,4 +37,19 @@ export const storeAttributes = () => {
 };
 
 export const stateControl = storeAttributes();
+
+export const enhanceAttributes = (item, prop, value) => {
+  return (state) => {
+    if (state.items.length < 5) {
+      return {
+        ...state,
+        [prop]: (state[prop] || 0) + value,
+        items: [...state.items, item]
+      };
+    } else {
+      console.log(`${state.type} cannot carry more than 5 items!`);
+      return state;
+    }
+  };
+};
 
