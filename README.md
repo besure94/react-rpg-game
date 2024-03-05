@@ -2,7 +2,7 @@
 
 #### An application containing business logic for an RPG game.
 
-#### By (Your Name Here)
+#### By Brian Scherner
 
 ## Technologies Used
 
